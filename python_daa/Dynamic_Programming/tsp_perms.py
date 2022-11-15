@@ -23,7 +23,6 @@ def tsp(start,og_start,vertex_set,graph):
         
         total_cost.append(cost)
 
-    print("This is total_cost",total_cost)
     return min(total_cost)
 
 
