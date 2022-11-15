@@ -26,4 +26,15 @@ def tsp(start,og_start,vertex_set,graph):
     return min(total_cost)
 
 
-print(tsp(0,0,vertex_set={1,2,3},graph = graph))
+
+def wrapper_function(starting_point,graph):
+
+    start = starting_point
+    og_start = starting_point
+    vertex_set = set([i for i in range(len(graph))])
+    vertex_set.remove(start)
+
+    return tsp(start,og_start,vertex_set,graph)
+
+
+print(wrapper_function(0,graph))    
