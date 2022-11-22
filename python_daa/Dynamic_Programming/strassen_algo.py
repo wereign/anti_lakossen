@@ -1,3 +1,5 @@
+# Version 3.6
+
 import numpy as np
 
 def split(matrix):
@@ -28,20 +30,23 @@ def strassen(x, y):
 
 	# Computing the 7 products, recursively (p1, p2...p7)
 	p1 = strassen(a, f - h)
-	p2 = strassen(a + b, h)		
-	p3 = strassen(c + d, e)		
-	p4 = strassen(d, g - e)		
-	p5 = strassen(a + d, e + h)		
+	p2 = strassen(a + b, h)	
+	p3 = strassen(c + d, e)	
+	p4 = strassen(d, g - e)	
+	p5 = strassen(a + d, e + h)	
 	p6 = strassen(b - d, g + h)
 	p7 = strassen(a - c, e + f)
 
 	# Computing the values of the 4 quadrants of the final matrix c
 	c11 = p5 + p4 - p2 + p6
 	c12 = p1 + p2		
-	c21 = p3 + p4			
+	c21 = p3 + p4		
 	c22 = p1 + p5 - p3 - p7
 
 	# Combining the 4 quadrants into a single matrix by stacking horizontally and vertically.
 	c = np.vstack((np.hstack((c11, c12)), np.hstack((c21, c22))))
 
 	return c
+
+
+strassen(np.array([[1,0,0,0],[0,1,0,0],[0,0,1,0],[0,0,0,1]]),np.array([[1,2,3,4],[5,6,7,8],[9,10,11,12],[13,14,15,16]]))
